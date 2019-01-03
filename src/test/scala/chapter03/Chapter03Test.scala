@@ -94,4 +94,38 @@ class Chapter03Test extends FunSuite {
     assert(concat(List(l, s)) == List(1, 2, 3, 4, 5, 6, 7, 8, 9))
   }
 
+  // Exercise 3.16
+  test("Exercise 3.16") {
+    assert(addOne(Nil) == Nil)
+    assert(addOne(s) == List(7, 8, 9, 10))
+  }
+
+  // Exercise 3.17
+  test("Exercise 3.17") {
+    assert(convertToString(Nil) == Nil)
+    assert(convertToString(dl) == List("1.0", "2.0", "3.0", "4.0", "5.0"))
+  }
+
+  // Exercise 3.18
+  test("Exercise 3.18") {
+    assert(map(s)(x => 2 * x - 1) == List(11, 13, 15, 17))
+  }
+
+  // Exercise 3.19
+  test("Exercise 3.19") {
+    assert(filter(Nil: List[Int])(_ => true) == Nil)
+    assert(filter(l)(x => x % 2 == 0) == List(2, 4))
+  }
+
+  // Exercise 3.20
+  test("Exercise 3.20") {
+    assert(flatMap(List(1, 2, 3))(i => List(i, i)) == List(1, 1, 2, 2, 3, 3))
+  }
+
+  // Exercise 3.21
+  test("Exercise 3.21") {
+    assert(filterUseFlatMap(Nil: List[Int])(_ => true) == Nil)
+    assert(filterUseFlatMap(l)(x => x % 2 == 0) == List(2, 4))
+  }
+
 }

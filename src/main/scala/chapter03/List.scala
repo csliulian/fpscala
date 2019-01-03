@@ -104,4 +104,41 @@ object List {
   def concat[A](lists: List[List[A]]): List[A] = {
     foldRight(lists, Nil: List[A])((x, y) => appendUseFoldRight(x, y))
   }
+
+  // Exercise 3.16
+  def addOne(l: List[Int]): List[Int] = {
+    foldRight(l, Nil: List[Int])((x, xs) => Cons(x + 1, xs))
+  }
+
+  // Exercise 3.17
+  def convertToString(l: List[Double]): List[String] = {
+    foldRight(l, Nil: List[String])((x, xs) => Cons(x.toString, xs))
+  }
+
+  // Exercise 3.18
+  def map[A, B](l: List[A])(f: A => B): List[B] = {
+    foldRight(l, Nil: List[B])((x, xs) => Cons(f(x), xs))
+  }
+
+  // Exercise 3.19
+  def filter[A](l: List[A])(f: A => Boolean): List[A] = {
+    foldRight(l, Nil: List[A])((x, xs) =>
+      if (f(x)) Cons(x, xs)
+      else xs
+    )
+  }
+
+  // Exercise 3.21
+  def filterUseFlatMap[A](l: List[A])(f: A => Boolean): List[A] = {
+    flatMap(l)(x => {
+      if (f(x)) List(x)
+      else Nil
+    })
+  }
+
+  // Exercise 3.20
+  def flatMap[A, B](l: List[A])(f: A => List[B]): List[B] = {
+    foldLeft(l, Nil: List[B])((xs, x) => append(xs, f(x)))
+  }
+
 }
